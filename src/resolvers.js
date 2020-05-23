@@ -1,37 +1,20 @@
-import { users } from "./db";
+import { aboutItems, contactItems, projectItems, pages } from "./db";
 
 const resolvers = {
     Query: {
-        user: (parent, { id }, context, info) => {
-          return users.find(user => user.id === id);
+        aboutItems: (parent, args, context, info) => {
+          return aboutItems;
         },
-        users: (parent, args, context, info) => {
-          return users;
+        contactItems: (parent, args, context, info) => {
+          return contactItems;
+        },
+        projectItems: (parent, args, context, info) => {
+          return projectItems;
+        },
+        page: (parent, {title}, context, info) => {
+          return pages.find((page) => page,title === title)
         }
       },
-      Mutation: {
-          createUser: (parent, {id, name, email, age}, context, info) => {
-            const newUser = { id, name, email, age}
-            users.push(newUser)
-            return newUser;
-          },
-          updateUser: (parent, {id, name, email, age}, context, info) => {
-            const userToUpdate = users.find((user) => user.id === id)
-            userToUpdate.name = name
-            userToUpdate.email = email
-            userToUpdate.age = age
-            return userToUpdate
-          },
-          deleteUser: (parent, {id}, context, info) => {
-            const userIndex = users.findIndex(user => user.id === id);
-
-            if (userIndex === -1) throw new Error("User not found.");
-
-            const deletedUsers = users.splice(userIndex, 1);
-
-            return deletedUsers[0];
-          }
-      }
 };
 
 export default resolvers;

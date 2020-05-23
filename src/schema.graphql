@@ -1,18 +1,32 @@
 type Query {
-  users: [User!]!,
-  user(id: ID!): User!,
-  hello: String!
+  aboutItems: [aboutItems]!,
+  contactItems: [contactItems]!,
+  projectItems: [projectItems]!,
+  page(title: String!): page
 }
 
-type User {
-  id: ID!
-  name: String!
-  email: String!
-  age: Int
+type aboutItems {
+  answer: String!,
+  question: String!
 }
 
-type Mutation {
-    createUser(id: ID!, name: String!, email: String!, age: Int): User!
-    updateUser(id: ID!, name: String, email: String, age: Int): User!
-    deleteUser(id: ID!): User!
+type contactItems {
+  icon: String!,
+  link: String!,
+  title: String!
+}
+
+type projectItems {
+  description: String!,
+  image: String!,
+  link: String!,
+  title: String!
+}
+
+type page {
+  background: String!,
+  contactClass: String!,
+  stylingClass: String!,
+  tagline: String!,
+  title: String!
 }
