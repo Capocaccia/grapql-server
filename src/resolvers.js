@@ -12,7 +12,7 @@ const resolvers = {
           return projectItems;
         },
         page: (parent, {title}, context, info) => {
-          return pages.find((page) => page,title === title)
+          return pages.find((page) => page.title === title)
         }
       },
 };

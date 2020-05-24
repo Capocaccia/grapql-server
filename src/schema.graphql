@@ -25,8 +25,8 @@ type projectItems {
 
 type page {
   background: String!,
-  contactClass: String!,
-  stylingClass: String!,
+  contentClass: String!,
+  stylingClasses: String!,
   tagline: String!,
   title: String!
 }
